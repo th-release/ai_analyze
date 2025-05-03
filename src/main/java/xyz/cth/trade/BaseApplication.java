@@ -1,0 +1,17 @@
+package xyz.cth.trade;
+
+import com.binance.sdk.EnabledBinance;
+import lombok.AllArgsConstructor;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+
+@EnabledBinance
+@AllArgsConstructor
+@SpringBootApplication
+@EnableJpaRepositories
+public class BaseApplication {
+	public static void main(String[] args) {
+		SpringApplication.run(BaseApplication.class, args);
+	}
+}

@@ -1,0 +1,32 @@
+proven:
+  key: ${PROVEN_OPENAI_KEY:_}
+
+spring:
+  main:
+    allow-circular-references: true
+  datasource:
+    url: jdbc:postgresql://${PROVEN_DATABASE_URL:_}:${PROVEN_DATABASE_PORT:5432}/proven
+    username: ${PROVEN_DATABASE_USERNAME:_}
+    password: ${PROVEN_DATABASE_PASSWORD:_}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: xyz.cth.trade.common.configs.CustomPhysicalNamingStrategy
+    properties: # property ?? ??
+      hibernate: # hibernate property ??
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show-sql: false
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+server:
+  forward-headers-strategy: FRAMEWORK
+  servlet:
+    contextPath: /api
+  port: 8080
